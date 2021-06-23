@@ -8,15 +8,26 @@ class Teacher
     private int $id;
     private string $email;
     private $classId;
+    private $className;
 
 
 
-    public function __construct(string $name, int $id, string $email, $classId)
+    public function __construct(string $name, int $id, string $email, $classId, $className)
     {
         $this->name = $name;
         $this->id = $id;
         $this->email = $email;
+        $this->classId = $classId;
+        $this->className= $className;
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClassName()
+    {
+        return $this->className;
     }
 
     public function getName(): string
@@ -49,7 +60,7 @@ class Teacher
         $this->email = $email;
     }
 
-    public function getClassId(): int
+    public function getClassId()
     {
         return $this->classId;
     }

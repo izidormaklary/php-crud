@@ -7,20 +7,19 @@ class StudentLoader
     public function loadStudents()
     {
         $pdo= Connection::openConnection();
-        $handle = $pdo->prepare('SELECT s.id as id, s.Name as name, t.id as teacherId, s.email as email FROM student s LEFT JOIN teacher t on s.teacherId=t.id');
+        $handle = $pdo->prepare('SELECT s.id as id, s.Name as name, s.teacherId as teacherId, t.name as teacher, c.id as classId, c.name as className, s.email as email FROM student s LEFT JOIN teacher t on s.teacherId=t.id LEFT JOIN class c on s.teacherId= c.teacherId');
         $handle->execute();
         $students= $handle->fetchAll();
         foreach ($students as $s){
-            $this->students[]= new Student($s['name'], $s['id'], $s['email'], $s['teacherId']);
+            $this->students[]= new Student($s['name'], $s['id'], $s['email'], $s['classId'], $s['className'], $s['teacherId'], $s['teacher']);
         }
-        var_dump($this->students);
+
     }
-    public static function insertStudent($name, $email){
+    public static function insertStudent($name, $teacherId, $email){
         $pdo= Connection::openConnection();
-        $handle = $pdo->prepare('INSERT INTO student ( Name, email) VALUES ( :name,  :email)');
+        $handle = $pdo->prepare('INSERT INTO student ( Name, teacherId, email) VALUES ( :name, :teacherId,  :email)');
         $handle->bindValue(':name', $name);
-        //$handle->bindValue(':class', $class);
-        //$handle->bindValue(':teacherId', $teacherId);
+        $handle->bindValue(':teacherId', $teacherId);
         $handle->bindValue(':email',$email);
         $handle->execute();
     }
