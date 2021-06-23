@@ -3,15 +3,26 @@
 
 class Classroom
 {
+    private int $id;
     private string $name;
     private string $location;
-    private int $teacherId;
+    private $teacher;
+    private $teacherId;
+    private array $students = [];
 
-    public function __construct(string $name, string $location, int $teacherId)
+    public function getId(): int
     {
+        return $this->id;
+    }
+
+    public function __construct(int $id, string $name, string $location, $teacher, $teacherId, array $students)
+    {
+        $this->id = $id;
         $this->name = $name;
         $this->location = $location;
+        $this->teacher = $teacher;
         $this->teacherId = $teacherId;
+        $this->students =$students;
     }
 
     public function getName(): string
@@ -34,9 +45,9 @@ class Classroom
         $this->location = $location;
     }
 
-    public function getTeacherId(): int
+    public function getTeacher()
     {
-        return $this->teacherId;
+        return $this->teacher;
     }
 
 
@@ -45,5 +56,30 @@ class Classroom
         $this->teacherId = $teacherId;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTeacherId()
+    {
+        return $this->teacherId;
+    }
+
+    public function getStudents(): array
+    {
+        return $this->students;
+    }
+//    public function getTeacher(): string
+//    {
+//        if (isset($this->teacherId)) {
+//            $pdo = Connection::openConnection();
+//            $handle = $pdo->prepare('SELECT  t.name as name FROM teacher t LEFT JOIN class c ON t.id= c.teacherId WHERE c.teacherId = :id');
+//            $handle->bindValue(':id', $this->teacherId);
+//            $handle->execute();
+//            return $handle->fetch()['name'];
+//        } else {
+//            return  'no teacher';
+//        }
+//
+//    }
 
 }
