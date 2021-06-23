@@ -8,11 +8,11 @@ class TeacherLoader
     public function loadTeachers()
     {
         $pdo = Connection::openConnection();
-        $handle = $pdo->prepare('SELECT t.id as id, t.Name as name, c.id as classId, t.email as email FROM teacher t LEFT JOIN class c on t.id=c.teacherId');
+        $handle = $pdo->prepare('SELECT t.id as id, t.Name as name, c.id as classId, c.name as className t.email as email FROM teacher t LEFT JOIN class c on t.id=c.teacherId');
         $handle->execute();
         $teachers = $handle->fetchAll();
         foreach ($teachers as $t) {
-            $this->teachers[] = new Teacher($t['name'], $t['id'], $t['email'], $t['classId']);
+            $this->teachers[] = new Teacher($t['name'], $t['id'], $t['email'], $t['classId'], $t['className']);
         }
 
     }
