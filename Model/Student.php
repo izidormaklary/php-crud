@@ -22,7 +22,4 @@ class Student extends Teacher
     {
         return $this->teacher;
     }
-
-
-
 }

@@ -22,25 +22,16 @@ class Teacher
         $this->className= $className;
     }
 
-    /**
-     * @return array
-     */
     public function getStudents(): array
     {
         return $this->students;
     }
 
-    /**
-     * @param array $students
-     */
     public function setStudents(array $students): void
     {
         $this->students = $students;
     }
 
-    /**
-     * @return mixed
-     */
     public function getClassName()
     {
         return $this->className;
@@ -51,19 +42,9 @@ class Teacher
         return $this->name;
     }
 
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     public function getEmail(): string
@@ -71,20 +52,10 @@ class Teacher
         return $this->email;
     }
 
-    public function setEmail(string $email): void
-    {
-        $this->email = $email;
-    }
 
     public function getClassId()
     {
         return $this->classId;
     }
-
-    public function setClassId(int $classId): void
-    {
-        $this->classId = $classId;
-    }
-
 }
 

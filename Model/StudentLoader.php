@@ -71,6 +71,3 @@ class StudentLoader
         }
     }
 }
-////StudentLoader::insertStudent("becody", "becode@becode.werp" );
-//$student = new StudentLoader();
-//$student->loadStudents();

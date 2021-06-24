@@ -31,7 +31,6 @@ class ClassroomLoader
         $pdo = Connection::openConnection();
         $handle = $pdo->prepare('INSERT INTO class ( name, Location, teacherId) VALUES ( :name,  :Location, :teacherId)');
         $handle->bindValue(':name', $name);
-        //$handle->bindValue(':class', $class);
         $handle->bindValue(':teacherId', $teacherId);
         $handle->bindValue(':Location', $location);
         $handle->execute();

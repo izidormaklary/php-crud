@@ -30,19 +30,9 @@ class Classroom
         return $this->name;
     }
 
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
     public function getLocation(): string
     {
         return $this->location;
-    }
-
-    public function setLocation(string $location): void
-    {
-        $this->location = $location;
     }
 
     public function getTeacher()
@@ -50,15 +40,6 @@ class Classroom
         return $this->teacher;
     }
 
-
-    public function setTeacherId(int $teacherId): void
-    {
-        $this->teacherId = $teacherId;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getTeacherId()
     {
         return $this->teacherId;
@@ -68,18 +49,4 @@ class Classroom
     {
         return $this->students;
     }
-//    public function getTeacher(): string
-//    {
-//        if (isset($this->teacherId)) {
-//            $pdo = Connection::openConnection();
-//            $handle = $pdo->prepare('SELECT  t.name as name FROM teacher t LEFT JOIN class c ON t.id= c.teacherId WHERE c.teacherId = :id');
-//            $handle->bindValue(':id', $this->teacherId);
-//            $handle->execute();
-//            return $handle->fetch()['name'];
-//        } else {
-//            return  'no teacher';
-//        }
-//
-//    }
-
 }

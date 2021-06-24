@@ -32,20 +32,5 @@ class studentController
             $studentObj = $students->getStudents();
             require 'View/student/studentTableView.php';
         }
-
     }
 }
-
-
-//$pdo = Connection::openConnection();
-//$handle = $pdo->prepare('SELECT t.id FROM class c WHERE c.id = :id');
-//$handle->bindValue(':id', $classId);
-//$handle->execute();
-//$students = $handle->fetchAll();
-//
-//$handle = $pdo->prepare('INSERT INTO class ( name, Location, teacherId) VALUES ( :name,  :Location, :teacherId)');
-//$handle->bindValue(':name', $name);
-////$handle->bindValue(':class', $class);
-//$handle->bindValue(':teacherId', $teacherId);
-//$handle->bindValue(':Location', $location);
-//$handle->execute();

@@ -26,16 +26,12 @@ class TeacherLoader
             $teacherobj->setStudents($temp);
             $this->teachers[] = $teacherobj;
         }
-
     }
-
     public static function insertTeacher($name, $email)
     {
         $pdo = Connection::openConnection();
         $handle = $pdo->prepare('INSERT INTO teacher ( Name, email) VALUES ( :name,  :email)');
         $handle->bindValue(':name', $name);
-        //$handle->bindValue(':class', $class);
-        //$handle->bindValue(':teacherId', $teacherId);
         $handle->bindValue(':email', $email);
         $handle->execute();
     }
@@ -77,10 +73,5 @@ class TeacherLoader
                 return $teacher;
             }
         }
-    }
-
-    public function studentsForTeacher()
-    {
-
     }
 }
