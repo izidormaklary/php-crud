@@ -53,3 +53,8 @@ On the detailed overview you have to provide the following information:
 - Add a search bar at the top of each page to search for the names of teachers or students
 - Make an address entity. An address can be assigned to a student or teacher (where he lives) or to a class (where are the lessons given).
 - Add [Basic HTTP Authentication](https://www.lifewire.com/password-protect-single-file-with-htaccess-3467922) with a `.htaccess` file.
+
+# trying to fix:
+
+- [ ] ability to load students with empty fk-s
+
