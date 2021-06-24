@@ -20,9 +20,9 @@
                     <input class="form-control" type="text" name="email" value="<?php echo $selectedStudent->getEmail(); ?>"
                 </td>
                 <td>
-                    <select name="teacherId" class="form-select">
-                        <?php foreach ($teachers->getTeachers() as $t): ?>
-                                <option value="<?php echo $t->getId(); ?>"><?php echo $t->getName()." (class: ". $t->getClassName().")"; ?></option>
+                    <select name="classId" class="form-select">
+                        <?php foreach ($classrooms->getClassrooms() as $c): ?>
+                            <option value="<?php echo $c->getId(); ?>"><?php echo $c->getName() . " (teacher: " . $c->getTeacher() . ")"; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>

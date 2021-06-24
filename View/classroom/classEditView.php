@@ -21,7 +21,7 @@
                 </td>
                 <td>
                     <select name="teacherId" class="form-select" aria-label=".form-select-lg example">
-                        <?php foreach ($teachers->getTeachers() as $t): ?>
+                        <?php foreach (array_unique($teachers->getTeachers(),SORT_REGULAR) as $t): ?>
                                 <option value="<?php echo $t->getId(); ?>"><?php echo $t->getName(); ?></option>
                         <?php endforeach; ?>
                     </select>

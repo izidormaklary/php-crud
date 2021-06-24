@@ -6,7 +6,7 @@ class Student extends Teacher
     private string $teacher;
 
 
-    public function __construct(string $name, int $id, string $email, $classId,$className, int $teacherId, $teacher)
+    public function __construct(string $name, int $id, string $email, $classId, $className, int $teacherId, $teacher)
     {
        parent::__construct($name, $id, $email, $classId,$className);
         $this->teacherId = $teacherId;

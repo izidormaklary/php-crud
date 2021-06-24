@@ -19,9 +19,9 @@
                     <input type="text" class="form-control" name="email">
                 </td>
                 <td>
-                    <select name="classId" class="form-select">
-                        <?php foreach ($classrooms->getClassrooms() as $c): ?>
-                            <option value="<?php echo $c->getId(); ?>"><?php echo $c->getName() . " (teacher: " . $c->getTeacher() . ")"; ?></option>
+                    <select name="teacherId" class="form-select">
+                        <?php foreach ($teachers->getTeachers() as $t): ?>
+                            <option value="<?php echo $t->getId(); ?>"><?php echo $t->getName() . " (class: " . $t->getClassName() . ")"; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>

@@ -7,7 +7,7 @@ class StudentLoader
     public function loadStudents()
     {
         $pdo= Connection::openConnection();
-        $handle = $pdo->prepare('SELECT s.id as id, s.Name as name, s.teacherId as teacherId, t.name as teacher, c.id as classId, c.name as className, s.email as email FROM student s LEFT JOIN teacher t on s.teacherId=t.id LEFT JOIN class c on s.teacherId= c.teacherId');
+        $handle = $pdo->prepare('SELECT s.id as id, s.Name as name, s.teacherId as teacherId, t.name as teacher, s.classId as classId, c.name as className, s.email as email FROM student s LEFT JOIN teacher t on s.teacherId=t.id LEFT JOIN class c on s.teacherId= c.teacherId GROUP BY s.id ORDER BY s.name');
         $handle->execute();
         $students= $handle->fetchAll();
         foreach ($students as $s){
@@ -15,11 +15,18 @@ class StudentLoader
         }
 
     }
-    public static function insertStudent($name, $teacherId, $email){
+    public static function insertStudent($name, $classId, $email){
+        $pdo = Connection::openConnection();
+        $handle = $pdo->prepare('SELECT teacherId as id FROM class WHERE id = :classId');
+        $handle->bindValue(':classId', $classId);
+        $handle->execute();
+        $t = $handle->fetch();
+
         $pdo= Connection::openConnection();
-        $handle = $pdo->prepare('INSERT INTO student ( Name, teacherId, email) VALUES ( :name, :teacherId,  :email)');
+        $handle = $pdo->prepare('INSERT INTO student ( Name, teacherId,classID, email) VALUES ( :name, :teacherId, :classId,  :email)');
         $handle->bindValue(':name', $name);
-        $handle->bindValue(':teacherId', $teacherId);
+        $handle->bindValue(':classId', $classId);
+        $handle->bindValue(':teacherId', $t['id']);
         $handle->bindValue(':email',$email);
         $handle->execute();
     }
@@ -29,12 +36,19 @@ class StudentLoader
         return $this->students;
     }
 
-    public static function updateStudent($email,$teacherId, $name, $id)
+    public static function updateStudent($email,$classId, $name, $id)
     {
         $pdo = Connection::openConnection();
-        $handle = $pdo->prepare(' UPDATE student SET  name = :name, teacherId=:teacherId, email = :email WHERE id = :id ');
+        $handle = $pdo->prepare('SELECT teacherId as id FROM class WHERE id = :classId');
+        $handle->bindValue(':classId', $classId);
+        $handle->execute();
+        $t = $handle->fetch();
+
+        $pdo = Connection::openConnection();
+        $handle = $pdo->prepare(' UPDATE student SET  name = :name, teacherId=:teacherId, classId=:classId, email = :email WHERE id = :id ');
         $handle->bindValue(':email', $email);
-        $handle->bindValue(':teacherId', $teacherId);
+        $handle->bindValue(':teacherId', $t['id']);
+        $handle->bindValue(':classId', $classId);
         $handle->bindValue(':name', $name);
         $handle->bindValue(':id', $id);
         $handle->execute();
