@@ -20,6 +20,10 @@ class studentController
         } elseif (isset($_POST['insert'])) {
             $students->loadStudents();
             require 'View/student/studentInsertView.php';
+        }elseif (isset($_GET['student'])) {
+            $$students->loadStudents();
+            $selectedStudent = $students->selectStudent($_GET['student']);
+            require 'View/teacher/teacherFocusView.php';
         } else {
             if (isset($_POST['submitStudentEdit'])) {
                 StudentLoader::updateStudent($_POST['email'], $_POST['classId'], $_POST['name'], intval($_POST['id']));

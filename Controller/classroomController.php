@@ -9,8 +9,9 @@ class classroomController
         $teacherpage = "";
         $classpage = "active";
         $studentpage = "";
+        $classes = new ClassroomLoader();
         if (isset($_POST['editId'])) {
-            $classes = new ClassroomLoader();
+
             $classes->loadClassrooms();
             $selectedClass = $classes->selectClass($_POST['editId']);
             $teachers = new TeacherLoader();
@@ -21,7 +22,11 @@ class classroomController
             $teachers = new TeacherLoader();
             $teachers->loadTeachers();
             require 'View/classroom/classInsertView.php';
-        } else {
+        } elseif (isset($_GET['teacher'])) {
+            $classes->loadClassrooms();
+            $selectedClass = $classes->selectClass($_GET['teacher']);
+            require 'View/teacher/teacherFocusView.php';
+        }else {
             if (isset($_POST['submitClassEdit'])) {
                 ClassroomLoader::updateClassroom($_POST['location'], $_POST['name'], $_POST['teacherId'], $_POST['id']);
             } elseif (isset($_POST['deleteId'])) {
