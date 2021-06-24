@@ -2,11 +2,12 @@
 <section>
     <table class="table table-striped">
         <thead class="">
-        <tr>
+        <tr class="text-center">
             <th>Name</th>
             <th>Email</th>
             <th>Teacher</th>
             <th>Class</th>
+            <th colspan="2" ></th>
         </tr>
         </thead>
         <tbody>
@@ -26,23 +27,14 @@
                         <a href="?class=<?php echo $s->getClassId(); ?>"><?php echo $s->getClassName(); ?></a>
                         <?php endif; ?>
                     </td>
-<!--                    <td>-->
-<!--                        <ul>-->
-<!--                        --><?php //foreach ($s->getStudents() as $s): ?>
-<!--                        <li>-->
-<!--                            <a href="?student=--><?php //echo $s['id']; ?><!--">--><?php //echo $s['name']; ?><!--</a>-->
-<!--                        </li>-->
-<!--                        --><?php //endforeach; ?>
-<!--                        </ul>-->
-<!--                    </td>-->
                     <td>
-                        <form method="post">
-                            <button name="editId" class="btn btn-warning" value="<?php echo $s->getId() ?>">Edit</button>
+                        <form  method="post">
+                            <button name="editId" class="btn btn-warning mx-auto d-block w-75" value="<?php echo $s->getId() ?>">Edit</button>
                         </form>
                     </td>
                     <td>
                         <form method="post">
-                            <button name="deleteId" class="btn btn-danger" value="<?php echo $s->getId() ?>">Delete</button>
+                            <button name="deleteId" class="btn btn-danger mx-auto d-block w-75" value="<?php echo $s->getId() ?>">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -50,7 +42,7 @@
         </tbody>
     </table>
     <form method="post">
-        <button name="insert" class="btn btn-primary">Create a new Class</button>
+        <button name="insert" class="btn btn-primary">Add a new student</button>
     </form>
 </section>
 

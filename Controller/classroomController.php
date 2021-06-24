@@ -23,7 +23,7 @@ class classroomController
             require 'View/classroom/classInsertView.php';
         } else {
             if (isset($_POST['submitClassEdit'])) {
-                ClassroomLoader::updateClassroom($_POST['location'], $_POST['name'], $_POST['teacherId'], $_POST['editId']);
+                ClassroomLoader::updateClassroom($_POST['location'], $_POST['name'], $_POST['teacherId'], $_POST['id']);
             } elseif (isset($_POST['deleteId'])) {
                 ClassroomLoader::deleteClass($_POST['deleteId']);
             } elseif (isset($_POST['insertNewClass'])) {
@@ -32,8 +32,10 @@ class classroomController
             $classes = new ClassroomLoader();
             $classes->loadClassrooms();
             $classObj = $classes->getClassrooms();
+
             require 'View/classroom/classTableView.php';
         }
+
     }
 
 

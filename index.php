@@ -7,7 +7,6 @@ declare(strict_types=1);
 require 'Model/connection.php';
 require 'Model/Classroom.php';
 require 'Model/ClassroomLoader.php';
-
 require 'Model/Teacher.php';
 require 'Model/TeacherLoader.php';
 require 'Model/Student.php';

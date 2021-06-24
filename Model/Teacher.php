@@ -9,6 +9,7 @@ class Teacher
     private string $email;
     private $classId;
     private $className;
+    private array $students=[];
 
 
 
@@ -19,7 +20,22 @@ class Teacher
         $this->email = $email;
         $this->classId = $classId;
         $this->className= $className;
+    }
 
+    /**
+     * @return array
+     */
+    public function getStudents(): array
+    {
+        return $this->students;
+    }
+
+    /**
+     * @param array $students
+     */
+    public function setStudents(array $students): void
+    {
+        $this->students = $students;
     }
 
     /**

@@ -32,7 +32,7 @@ class StudentLoader
     public static function updateStudent($email,$teacherId, $name, $id)
     {
         $pdo = Connection::openConnection();
-        $handle = $pdo->prepare(' UPDATE student SET  name = :name, teacherId=:teacherId email = :email WHERE id = :id ');
+        $handle = $pdo->prepare(' UPDATE student SET  name = :name, teacherId=:teacherId, email = :email WHERE id = :id ');
         $handle->bindValue(':email', $email);
         $handle->bindValue(':teacherId', $teacherId);
         $handle->bindValue(':name', $name);

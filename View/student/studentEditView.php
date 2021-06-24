@@ -1,35 +1,39 @@
 <?php require 'View/includes/header.php'; ?>
 <form method="post">
-    <table>
+    <table class="table">
         <thead>
-        <tr>
+        <tr class="text-center">
             <th>Name</th>
-            <th>Location</th>
+            <th>Email</th>
             <th>Teacher</th>
+            <th></th>
 <!--            <th>Students</th>-->
         </tr>
         </thead>
         <tbdody>
 
-            <tr>
+            <tr >
                 <td>
-                    <input type="text" name="name" value="<?php echo $selectedClass->getName(); ?>">
+                    <input class="form-control" type="text" name="name" value="<?php echo $selectedStudent->getName(); ?>">
                 </td>
                 <td>
-                    <input type="text" name="location" value="<?php echo $selectedClass->getLocation(); ?>"
+                    <input class="form-control" type="text" name="email" value="<?php echo $selectedStudent->getEmail(); ?>"
                 </td>
                 <td>
-                    <select name="teacherId">
+                    <select name="teacherId" class="form-select">
                         <?php foreach ($teachers->getTeachers() as $t): ?>
-                                <option value="<?php echo $t->getId(); ?>"><?php echo $t->getName(); ?></option>
+                                <option value="<?php echo $t->getId(); ?>"><?php echo $t->getName()." (class: ". $t->getClassName().")"; ?></option>
                         <?php endforeach; ?>
                     </select>
+                </td>
+                <td>
+                    <input type="number" name="id" value="<?php echo $selectedStudent->getId(); ?>" hidden>
+                    <input type="submit" class="btn btn-primary" name="submitStudentEdit">
                 </td>
             </tr>
 
         </tbdody>
     </table>
-    <input type="number" name="id" value="<?php echo $selectedClass->getId(); ?>" hidden>
-    <input type="submit" name="submitClassEdit">
+
 </form>
 <?php require 'View/includes/footer.php'; ?>

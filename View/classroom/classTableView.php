@@ -2,11 +2,12 @@
 <section>
     <table class="table table-striped">
         <thead class="">
-        <tr>
+        <tr class="text-center">
             <th>Name</th>
             <th>Location</th>
             <th>Teacher</th>
             <th>Students</th>
+            <th colspan="2" ></th>
         </tr>
         </thead>
         <tbody>
@@ -32,12 +33,12 @@
                     </td>
                     <td>
                         <form method="post">
-                            <button name="editId" class="btn btn-warning" value="<?php echo $c->getId() ?>">Edit</button>
+                            <button name="editId" class="btn btn-warning mx-auto d-block w-75" value="<?php echo $c->getId() ?>">Edit</button>
                         </form>
                     </td>
                     <td>
                         <form method="post">
-                            <button name="deleteId" class="btn btn-danger" value="<?php echo $c->getId() ?>">Delete</button>
+                            <button name="deleteId" class="btn btn-danger m-auto d-block w-75" value="<?php echo $c->getId() ?>">Delete</button>
                         </form>
                     </td>
                 </tr>
