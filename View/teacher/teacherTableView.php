@@ -1,6 +1,6 @@
 <?php require 'View/includes/header.php'; ?>
-<section>
-    <table class="table table-striped">
+<section class="my-5">
+    <table class="table table-striped shadow mx-auto">
         <thead class="">
         <tr class="text-center">
             <th>Name</th>
@@ -21,11 +21,7 @@
                 <td>
                     <ul>
                         <?php if (!empty($t->getStudents())): ?>
-                            <?php foreach ($t->getStudents() as $student): ?>
-                                <li>
-                                    <a href="?student=<?php echo $student['id']; ?>"><?php echo $student['name']; ?></a>
-                                </li>
-                            <?php endforeach; ?>
+                         <?php echo count($t->getStudents()) ?>
                         <?php endif; ?>
                     </ul>
                 </td>

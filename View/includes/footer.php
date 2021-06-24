@@ -1,4 +1,7 @@
-    <footer>
+    </div>
+
+    </div>
+<footer>
         &copy; BeCode <?php echo date('Y')?>
 
     </footer>

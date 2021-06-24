@@ -21,7 +21,6 @@ class TeacherLoader
                 $student = array("name" => $s['name'], "id" => $s['id']);
                 $temp[] = $student;
             }
-            var_dump($t['classId']);
             $teacherobj = new Teacher($t['name'], $t['id'], $t['email'], $t['classId'], $t['className']);
             $teacherobj->setStudents($temp);
             $this->teachers[] = $teacherobj;
@@ -58,6 +57,7 @@ class TeacherLoader
         $handle->bindValue(':teacherId', $id);
         $handle->execute();
         $foundInClasses = $handle->fetchAll();
+        var_dump($foundInClasses);
         if (empty($foundInClasses)) {
             $pdo = Connection::openConnection();
             $handle = $pdo->prepare('DELETE FROM teacher WHERE id = :id');

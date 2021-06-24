@@ -24,3 +24,5 @@
         <a href="?page=student" class="nav-link <?php echo $studentpage; ?>">Students page</a>
     </li>
 </ul>
+<div class="container">
+    <div class ="row">

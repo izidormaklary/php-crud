@@ -11,21 +11,20 @@
         </tr>
         </thead>
         <tbody>
-            <?php foreach ($classObj as $c): ?>
+
                 <tr>
                     <td>
-                        <?php echo $c->getName(); ?>
+                        <?php echo $selectedClass->getName(); ?>
                     </td>
                     <td>
-                        <?php echo $c->getLocation() ; ?>
+                        <?php echo $selectedClass->getLocation() ; ?>
                     </td>
                     <td>
-                        <a href="?teacher=<?php echo $c->getTeacherId(); ?>"><?php echo $c->getTeacher(); ?></a>
+                        <a href="?teacher=<?php echo $selectedClass->getTeacherId(); ?>"><?php echo $selectedClass->getTeacher(); ?></a>
                     </td>
-
                     <td>
                         <ul>
-                        <?php foreach ($c->getStudents() as $s): ?>
+                        <?php foreach ($selectedClass->getStudents() as $s): ?>
                         <li>
                             <a href="?student=<?php echo $s['id']; ?>"><?php echo $s['name']; ?></a>
                         </li>
@@ -34,22 +33,18 @@
                     </td>
                     <td>
                         <form method="post">
-                            <button name="editId" class="btn btn-warning mx-auto d-block w-75" value="<?php echo $c->getId() ?>">Edit</button>
+                            <button name="editId" class="btn btn-warning mx-auto d-block w-75" value="<?php echo $selectedClass->getId() ?>">Edit</button>
                         </form>
                     </td>
                     <td>
                         <form method="post">
-                            <button name="deleteId" class="btn btn-danger m-auto d-block w-75" value="<?php echo $c->getId() ?>">Delete</button>
+                            <button name="deleteId" class="btn btn-danger m-auto d-block w-75" value="<?php echo $selectedClass->getId() ?>">Delete</button>
                         </form>
                     </td>
                 </tr>
-            <?php endforeach; ?>
+
         </tbody>
     </table>
-    <form method="post">
-        <button name="insert" class="btn btn-primary">Create a new Class</button>
-    </form>
 </section>
-
 
 <?php require 'View/includes/footer.php'; ?>

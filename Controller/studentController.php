@@ -11,19 +11,22 @@ class studentController
         $students = new StudentLoader();
 
         $classrooms = new ClassroomLoader();
-        $classrooms->loadClassrooms();;
+        $classrooms->loadClassrooms();
+
+        //press edit button
         if (isset($_POST['editId'])) {
             $students->loadStudents();
             $selectedStudent = $students->selectStudent($_POST['editId']);
             require 'View/student/studentEditView.php';
-
+        //press create button
         } elseif (isset($_POST['insert'])) {
             $students->loadStudents();
             require 'View/student/studentInsertView.php';
+        //press create button
         }elseif (isset($_GET['student'])) {
-            $$students->loadStudents();
+            $students->loadStudents();
             $selectedStudent = $students->selectStudent($_GET['student']);
-            require 'View/teacher/teacherFocusView.php';
+            require 'View/student/studentFocusView.php';
         } else {
             if (isset($_POST['submitStudentEdit'])) {
                 StudentLoader::updateStudent($_POST['email'], $_POST['classId'], $_POST['name'], intval($_POST['id']));

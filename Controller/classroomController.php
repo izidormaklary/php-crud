@@ -22,10 +22,10 @@ class classroomController
             $teachers = new TeacherLoader();
             $teachers->loadTeachers();
             require 'View/classroom/classInsertView.php';
-        } elseif (isset($_GET['teacher'])) {
+        } elseif (isset($_GET['class'])) {
             $classes->loadClassrooms();
-            $selectedClass = $classes->selectClass($_GET['teacher']);
-            require 'View/teacher/teacherFocusView.php';
+            $selectedClass = $classes->selectClass($_GET['class']);
+            require 'View/classroom/classFocusView.php';
         }else {
             if (isset($_POST['submitClassEdit'])) {
                 ClassroomLoader::updateClassroom($_POST['location'], $_POST['name'], $_POST['teacherId'], $_POST['id']);

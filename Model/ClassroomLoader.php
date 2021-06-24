@@ -31,7 +31,7 @@ class ClassroomLoader
         $pdo = Connection::openConnection();
         $handle = $pdo->prepare('INSERT INTO class ( name, Location, teacherId) VALUES ( :name,  :Location, :teacherId)');
         $handle->bindValue(':name', $name);
-        $handle->bindValue(':teacherId', $teacherId);
+        $handle->bindValue(':teacherId',intval($teacherId));
         $handle->bindValue(':Location', $location);
         $handle->execute();
     }
@@ -53,6 +53,9 @@ class ClassroomLoader
     }
     public static function deleteClass($id){
         $pdo = Connection::openConnection();
+        $handle = $pdo->prepare('UPDATE student SET classId=null, teacherId=null WHERE classId = :id');
+        $handle->bindValue(':id', $id);
+        $handle->execute();
         $handle = $pdo->prepare('DELETE FROM class WHERE id = :id');
         $handle->bindValue(':id', $id);
         $handle->execute();

@@ -1,34 +1,38 @@
 <?php require 'View/includes/header.php'; ?>
-<form method="post">
-    <table>
+
+<section class="my-5">
+    <table class="table table-striped shadow mx-auto">
         <thead>
         <tr>
             <th>Name</th>
             <th>Location</th>
             <th>Teacher</th>
-<!--            <th>Students</th>-->
+            <!--            <th>Students</th>-->
         </tr>
         </thead>
         <tbdody>
-
-            <tr>
-                <td>
-                    <input type="text" name="name">
-                </td>
-                <td>
-                    <input type="text" name="location" >
-                </td>
-                <td>
-                    <select name="teacherId">
-                        <?php foreach ($teachers->getTeachers() as $t): ?>
+            <form method="post">
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" name="name">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="location">
+                    </td>
+                    <td>
+                        <select class="form-select" name="teacherId">
+                            <?php foreach ($teachers->getTeachers() as $t): ?>
                                 <option value="<?php echo $t->getId(); ?>"><?php echo $t->getName(); ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </td>
-            </tr>
-
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="submit" class="btn btn-primary" name="insertNewClass">
+                    </td>
+                </tr>
+            </form>
         </tbdody>
     </table>
-    <input type="submit" name="insertNewClass">
-</form>
+</section>
+
 <?php require 'View/includes/footer.php'; ?>

@@ -11,7 +11,7 @@ class StudentLoader
         $handle->execute();
         $students= $handle->fetchAll();
         foreach ($students as $s){
-            $this->students[]= new Student($s['name'], $s['id'], $s['email'], $s['classId'], $s['className'], $s['teacherId'], $s['teacher']);
+            $this->students[]= new Student($s['name'], $s['id'], $s['email'], $s['classId'], $s['className'], intval($s['teacherId']), $s['teacher']);
         }
 
     }
@@ -42,7 +42,7 @@ class StudentLoader
         $handle = $pdo->prepare('SELECT teacherId as id FROM class WHERE id = :classId');
         $handle->bindValue(':classId', $classId);
         $handle->execute();
-        $t = $handle->fetch();
+        $t = $handle->fetch()['id'];
 
         $pdo = Connection::openConnection();
         $handle = $pdo->prepare(' UPDATE student SET  name = :name, teacherId=:teacherId, classId=:classId, email = :email WHERE id = :id ');
