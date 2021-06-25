@@ -10,10 +10,6 @@ First assignment with the CRUD system.
 ## The Mission
 Create a CRUD system to store student, teacher and class information in the database. Using MVC structure.
 
-(probably at least 3 models and 3 controllers)
-
-
-
 ## Must-have features
 You have to provide the following pages for Students, Teacher & Class.
 
@@ -49,6 +45,8 @@ On the detailed overview you have to provide the following information:
 - [x] Assigned teacher (clickable link)
 - [x] List of assigned students (clickable link)
 
+***
+
 ## Nice to have features
 - [x] Add a search bar at the top of each page to search for the names of teachers or students
 - Make an address entity. An address can be assigned to a student or teacher (where he lives) or to a class (where are the lessons given).
@@ -57,4 +55,20 @@ On the detailed overview you have to provide the following information:
 # trying to fix:
 
 - [ ] ability to load students with empty fk-s
+- [ ] logical issues (can't add class without a teacher etc)
 
+***
+
+## Looks
+
+#### default view
+
+![img.png](resources/img.png)
+
+#### detailed view
+
+![img_1.png](resources/img_1.png)
+
+#### creating form look *(could have found a better name...)*
+
+![img_3.png](resources/img_3.png)
