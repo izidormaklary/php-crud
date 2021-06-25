@@ -74,4 +74,12 @@ class TeacherLoader
             }
         }
     }
+    public function selectTeacherByName($name)
+    {
+        foreach ($this->teachers as $teacher) {
+            if ($name == ucfirst($teacher->getName())) {
+                return $teacher;
+            }
+        }
+    }
 }

@@ -1,4 +1,11 @@
 <?php require 'View/includes/header.php'; ?>
+<div class="col-lg-7 offset-lg-2 mx-auto my-2">
+    <form method="post" class="text-center">
+        <button name="insert" class="btn btn-primary">Create a new Class</button>
+    </form>
+</div>
+</div>
+<div class="row">
 <section class="my-5">
     <table class="table table-striped shadow mx-auto">
         <thead class="">
@@ -24,13 +31,9 @@
                     </td>
 
                     <td>
-                        <ul>
-                        <?php foreach ($c->getStudents() as $s): ?>
-                        <li>
-                            <a href="?student=<?php echo $s['id']; ?>"><?php echo $s['name']; ?></a>
-                        </li>
-                        <?php endforeach; ?>
-                        </ul>
+                        <?php if (!empty($c->getStudents())): ?>
+                            <?php echo count($c->getStudents()) ?>
+                        <?php endif; ?>
                     </td>
                     <td>
                         <form method="post">
@@ -46,9 +49,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <form method="post">
-        <button name="insert" class="btn btn-primary">Create a new Class</button>
-    </form>
+
 </section>
 
 

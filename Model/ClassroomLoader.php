@@ -68,7 +68,14 @@ class ClassroomLoader
                 return $class;
             }
         }
-
+    }
+    public function selectClassByName($name)
+    {
+        foreach ($this->classrooms as $class) {
+            if ($name == ucfirst($class->getName())) {
+                return $class;
+            }
+        }
     }
 
 }

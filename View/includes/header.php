@@ -10,19 +10,36 @@
 </head>
 <body>
 <header>
-    <h1>Create, Read, Update & Delete</h1>
-</header>
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-        <a href="?page=teacher" class="nav-link <?php echo $teacherpage; ?>">Teachers page</a>
-    </li>
-    <li class="nav-item">
-        <a href="?page=class" class="nav-link <?php echo $classpage; ?>">Classes page</a>
 
-    </li>
-    <li class="nav-item">
-        <a href="?page=student" class="nav-link <?php echo $studentpage; ?>">Students page</a>
-    </li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="container-fluid">
+        <h1 class="navbar-brand">Create, Read, Update & Delete</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="?page=teacher" class="nav-link <?php echo $teacherpage; ?>">Teachers page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?page=class" class="nav-link <?php echo $classpage; ?>">Classes page</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a href="?page=student" class="nav-link <?php echo $studentpage; ?>">Students page</a>
+                    </li>
+            </ul>
+            <form method="post" class="d-flex">
+                <div class="input-group my-3">
+                    <input class="form-control  <?php echo $error; ?>" name="searchInput" type="text">
+                    <input class=" btn btn-primary" type="submit" name="search" value="Search">
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+</header>
+
 <div class="container">
     <div class ="row">

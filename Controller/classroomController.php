@@ -5,7 +5,7 @@ class classroomController
 {
     public function render()
     {
-        // ;
+        $error = "";
         $teacherpage = "";
         $classpage = "active";
         $studentpage = "";
@@ -26,6 +26,16 @@ class classroomController
             $classes->loadClassrooms();
             $selectedClass = $classes->selectClass($_GET['class']);
             require 'View/classroom/classFocusView.php';
+        }elseif (isset($_POST['search'])) {
+            $classes->loadClassrooms();
+            $selectedClass = $classes->selectClassByName(ucfirst($_POST['searchInput']));
+            if (empty($selectedClass)) {
+                $error= "border-warning";
+                $classObj = $classes->getClassrooms();
+                require 'View/classroom/classTableView.php';
+            } else {
+                require 'View/classroom/classFocusView.php';
+            }
         }else {
             if (isset($_POST['submitClassEdit'])) {
                 ClassroomLoader::updateClassroom($_POST['location'], $_POST['name'], $_POST['teacherId'], $_POST['id']);

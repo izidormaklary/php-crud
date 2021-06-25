@@ -5,7 +5,7 @@ class teacherController
 {
     public function render()
     {
-        // ;
+        $error = "";
         $teacherpage = "active";
         $classpage = "";
         $studentpage = "";
@@ -21,6 +21,16 @@ class teacherController
             $teachers->loadTeachers();
             $selectedTeacher = $teachers->selectTeacher($_GET['teacher']);
             require 'View/teacher/teacherFocusView.php';
+        }elseif (isset($_POST['search'])) {
+            $teachers->loadTeachers();
+            $selectedTeacher = $teachers->selectTeacherByName(ucfirst($_POST['searchInput']));
+            if (empty($selectedTeacher)) {
+                $error= "border-warning";
+                $teacherObj = $teachers->getTeachers();
+                require 'View/teacher/teacherTableView.php';
+            } else {
+                require 'View/teacher/teacherFocusView.php';
+            }
         } else {
             if (isset($_POST['submitTeacherEdit'])) {
                 TeacherLoader::updateTeacher($_POST['email'], $_POST['name'], intval($_POST['id']));

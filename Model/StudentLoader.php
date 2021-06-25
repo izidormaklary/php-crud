@@ -70,4 +70,12 @@ class StudentLoader
             }
         }
     }
+    public function selectStudentByName($name)
+    {
+        foreach ($this->students as $student) {
+            if ($name == ucfirst($student->getName())) {
+                return $student;
+            }
+        }
+    }
 }
